@@ -1,31 +1,13 @@
-#!/usr/bin/env python3
-import getpass
-import sys
-import subprocess
+echo # WELCOME
 
-EXPECTED = "iTzTasin69OG"
+sudo apt update && sudo apt upgrade -y
+sudo apt install cockpit -y
+sudo systemctl enable --now cockpit.socket
+sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y
+sudo systemctl enable --now libvirtd
+sudo apt install cockpit-machines -y
+sudo usermod -aG libvirt,kvm $USER
+sudo adduser exotic
+sudo adduser exotic sudo
 
-def protected_action():
-    # Put whatever you want to run here.
-    # Example: run a shell command
-    print("Password correct — running protected command...")
-    # Example: run a shell command (uncomment if you need it)
-    # subprocess.run(["echo", "Hello, protected world!"])
-    # Or call your function:
-    # my_command()
-
-def main():
-    try:
-        pw = getpass.getpass("please tell passowrs: ")
-    except Exception:
-        # fallback if terminal doesn't support getpass
-        pw = input("please tell passowrs: ")
-
-    if pw == EXPECTED:
-        protected_action()
-    else:
-        print("Wrong password. Exiting.")
-        sys.exit(1)
-
-if __name__ == "__main__":
-    main()
+echo https://localhost:9090 | no tls verifiy
