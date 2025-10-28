@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+import getpass
+import sys
+import subprocess
+
+EXPECTED = "iTzTasin69OG"
+
+def protected_action():
+    # Put whatever you want to run here.
+    # Example: run a shell command
+    print("Password correct — running protected command...")
+    # Example: run a shell command (uncomment if you need it)
+    # subprocess.run(["echo", "Hello, protected world!"])
+    # Or call your function:
+    # my_command()
+
+def main():
+    try:
+        pw = getpass.getpass("please tell passowrs: ")
+    except Exception:
+        # fallback if terminal doesn't support getpass
+        pw = input("please tell passowrs: ")
+
+    if pw == EXPECTED:
+        protected_action()
+    else:
+        print("Wrong password. Exiting.")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
