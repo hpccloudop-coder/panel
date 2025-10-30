@@ -39,7 +39,7 @@ sudo usermod -aG libvirt,kvm $USER
 # createuser.sh
 
 USERNAME="tasin"
-PASSWORD="iTzTasin69OG"
+PASSWORD="root@tasin"
 
 # create user
 useradd -m -s /bin/bash "$USERNAME"
